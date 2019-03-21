@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.rlbarros.taskmanager</groupId>
+	<artifactId>task-manager</artifactId>
+
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Task Manager</name>
+	<description>Task manager assistence online	</description>
+
+	<developers>
+		<developer>
+			<name>Rafael.Barros</name>
+			<email>rafaellfsa@gmail.com</email>
+		</developer>
+	</developers>
+
+	<properties>
+
+		<!-- PROPIEDADES DE BUILD -->
+		<base.project.artifactId>task-manager</base.project.artifactId>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<maven.resource.version>3.0.2</maven.resource.version>
+		<maven.compiler.version>3.7.0</maven.compiler.version>
+
+		<!-- PROPIEDADES DE MODULOS -->
+		<!-- PROPIEDADES DE DEPENDENCIAS EXTERNAS -->
+	</properties>
+
+	<modules>
+		<module>core</module>
+		<module>comum</module>
+		<module>api</module>
+		<module>web</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+		</dependencies>
+	</dependencyManagement>
+
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+		<!--  CONFIGURACAO CONTEXTO APLICACAO WEB-->
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<modules>
+						<webModule>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${project.artifactId}</artifactId>
+							<contextRoot>/taskmanager</contextRoot>
+						</webModule>
+					</modules>
+					<generateApplicationXml>true</generateApplicationXml>
+					<displayName>web-app</displayName>
+				</configuration>
+			</plugin>
+
+
+			<!-- remove a obrigatoriedade de configuracao do web.xml -->
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.2</version>
+				<configuration>
+					<!-- Java EE 7 doesn't require web.xml, Maven needs to catch up! -->
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<webResources>
+						<resource>
+							<directory>WebContent</directory>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+
+			<!-- especifica versao do java a ser compilado -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- especifica encode de compilacao -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resource.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
