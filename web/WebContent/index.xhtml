@@ -7,32 +7,26 @@
         <title>Web app ok</title>
     </h:head>
     <h:body>
-        <h:outputLabel value="INDEX initial page the app."/>
+        <h:outputLabel value="INDEX initial page the app 2."/>
         
         <h:outputLabel value="id" />
         <h:inputText id="id" value="#{tarefaBean.tarefa.id}" ></h:inputText>
-<br/>
+
         <h:outputLabel value="concluido" />
         <h:inputText id="concluido" value="#{tarefaBean.tarefa.concluido}" ></h:inputText>
-<br/>
-<br/>
 
         <h:outputLabel value="descricao" />
         <h:inputText id="descricao" value="#{tarefaBean.tarefa.descricao}" ></h:inputText>
-<br/>
 
         <h:outputLabel value="mesmoValorRecorrente" />
         <h:inputText id="mesmoValorRecorrente" value="#{tarefaBean.tarefa.mesmoValorRecorrente}" ></h:inputText>
-<br/>
 
         <h:outputLabel value="recorrencia" />
         <h:inputText id="recorrencia" value="#{tarefaBean.tarefa.recorrencia}" ></h:inputText>
-<br/>
 
         <h:outputLabel value="valorAtividade" ></h:outputLabel>
         <h:inputText id="valorAtividade" value="#{tarefaBean.tarefa.valorAtividade}" ></h:inputText>
-<br/>
 
-		<h:commandButton id="btnEnviar" value="Enviar" type="submit" action="#{tarefaBean.apresentaMensagem}" />
+		<h:commandButton id="btnEnviar" value="Enviar" type="submit" action="#{tarefaBean.apresentaMensagem}"></h:commandButton>
     </h:body>
 </html>
