@@ -41,6 +41,33 @@
 
 	<dependencyManagement>
 		<dependencies>
+
+			<!-- INICIO JSF DEPENDENCIAS PARA CADA SERVIDOR -->
+			<!-- Option 1: Use if deploying to a Java EE application server (GlassFish, JBoss AS, etc) -->
+			<!-- <dependency>
+				<groupId>javax.faces</groupId>
+				<artifactId>jsf-api</artifactId>
+				<version>2.0</version>
+				<scope>provided</scope>
+			</dependency> -->
+
+			<!-- Option 2: Use if deploying to a servlet container (Tomcat, Jetty, etc) -->
+
+			<dependency>
+				<groupId>com.sun.faces</groupId>
+				<artifactId>jsf-api</artifactId>
+				<version>2.0.2</version>
+<!-- 				<scope>runtime</scope> -->
+			</dependency>
+			<dependency>
+				<groupId>com.sun.faces</groupId>
+				<artifactId>jsf-impl</artifactId>
+				<version>2.0.2</version>
+<!-- 				<scope>runtime</scope> -->
+			</dependency>
+			<!-- FIM JSF DEPENDENCIAS PARA CADA SERVIDOR -->
+
+
 		</dependencies>
 	</dependencyManagement>
 
@@ -48,7 +75,7 @@
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
-		<!--  CONFIGURACAO CONTEXTO APLICACAO WEB-->
+			<!-- CONFIGURACAO CONTEXTO APLICACAO WEB -->
 			<plugin>
 				<artifactId>maven-ear-plugin</artifactId>
 				<version>2.5</version>
