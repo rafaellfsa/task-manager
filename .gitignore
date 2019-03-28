@@ -9,6 +9,7 @@
 /.settings/
 **/.settings/
 *.log
+*.manager
 /.apt_generated/
 /.apt_generated_tests/
 
