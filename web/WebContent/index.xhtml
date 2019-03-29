@@ -1,32 +1,48 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
  
     <h:head>
         <title>Web app ok</title>
     </h:head>
-    <h:body>
-        <h:outputLabel value="INDEX initial page the app 2."/>
-        
-        <h:outputLabel value="id" />
-        <h:inputText id="id" value="#{tarefaBean.tarefa.id}" ></h:inputText>
+<h:body>
 
-        <h:outputLabel value="concluido" />
-        <h:inputText id="concluido" value="#{tarefaBean.tarefa.concluido}" ></h:inputText>
+	<h:form>
+		<h:outputLabel value="INDEX initial page the app." />
 
-        <h:outputLabel value="descricao" />
-        <h:inputText id="descricao" value="#{tarefaBean.tarefa.descricao}" ></h:inputText>
+<!-- 		<h:outputLabel value="concluido" /> -->
+<!-- 		<h:inputText id="concluido" value="#{tarefaBean.tarefa.concluido}"></h:inputText> -->
+		
+<!-- 		<br /> -->
 
-        <h:outputLabel value="mesmoValorRecorrente" />
-        <h:inputText id="mesmoValorRecorrente" value="#{tarefaBean.tarefa.mesmoValorRecorrente}" ></h:inputText>
+		<h:outputLabel value="descricao" />
+		<h:inputText id="descricao" value="#{tarefaBean.tarefa.descricao}" ></h:inputText>
 
-        <h:outputLabel value="recorrencia" />
-        <h:inputText id="recorrencia" value="#{tarefaBean.tarefa.recorrencia}" ></h:inputText>
+<!-- 		<br /> -->
 
-        <h:outputLabel value="valorAtividade" ></h:outputLabel>
-        <h:inputText id="valorAtividade" value="#{tarefaBean.tarefa.valorAtividade}" ></h:inputText>
+<!-- 		<h:outputLabel value="mesmoValorRecorrente" /> -->
+<!-- 		<h:inputText id="mesmoValorRecorrente" -->
+<!-- 			value="#{tarefaBean.tarefa.mesmoValorRecorrente}"></h:inputText> -->
 
-		<h:commandButton id="btnEnviar" value="Enviar" type="submit" action="#{tarefaBean.apresentaMensagem}"></h:commandButton>
-    </h:body>
+<!-- 		<br /> -->
+
+<!-- 		<h:outputLabel value="recorrencia" /> -->
+<!-- 		<h:inputText id="recorrencia" value="#{tarefaBean.tarefa.recorrencia}"></h:inputText> -->
+
+<!-- 		<br /> -->
+
+<!-- 		<h:outputLabel value="valorAtividade"></h:outputLabel> -->
+<!-- 		<h:inputText id="valorAtividade" -->
+<!-- 			value="#{tarefaBean.tarefa.valorAtividade}"></h:inputText> -->
+<!-- 		<br /> -->
+
+		<h:commandButton id="btnEnviar" value="Send" action="#{tarefaBean.apresentaMensagem}" >
+<!-- 			<f:setPropertyActionListener target="#{tarefaBean.tarefa.descricao}" value="#{descricao}" ></f:setPropertyActionListener> -->
+		</h:commandButton>
+
+	</h:form>
+
+</h:body>
 </html>

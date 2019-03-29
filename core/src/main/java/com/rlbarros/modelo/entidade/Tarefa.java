@@ -24,7 +24,7 @@ public class Tarefa implements Serializable {
     
     private boolean isConcluido;
     
-    private String Descricao;
+    private String descricao;
     
     private Date dataLimiteTarefa;
     
@@ -51,11 +51,11 @@ public class Tarefa implements Serializable {
     }
 
     public String getDescricao() {
-        return Descricao;
+        return descricao;
     }
 
     public void setDescricao(String descricao) {
-        Descricao = descricao;
+       this.descricao = descricao;
     }
 
     public Date getDataLimiteTarefa() {
@@ -92,7 +92,7 @@ public class Tarefa implements Serializable {
 
     @Override
     public String toString() {
-        return "Tarefa [id=" + id + ", isConcluido=" + isConcluido + ", Descricao=" + Descricao + ", dataLimiteTarefa=" + dataLimiteTarefa + ", valorAtividade=" + valorAtividade
+        return "Tarefa [id=" + id + ", isConcluido=" + isConcluido + ", Descricao=" + descricao + ", dataLimiteTarefa=" + dataLimiteTarefa + ", valorAtividade=" + valorAtividade
                 + ", recorrencia=" + recorrencia + ", isMesmoValorRecorrente=" + isMesmoValorRecorrente + "]";
     }
 

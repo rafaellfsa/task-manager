@@ -17,11 +17,11 @@ import com.rlbarros.modelo.entidade.Tarefa;
 @ManagedBean
 public class TarefaBean {
     
-    private Tarefa tarefa;
+    private Tarefa tarefa = new Tarefa();
 
-    public String apresentaMensagem(Tarefa trf) {
+    public String apresentaMensagem() {
         
-        String msg = "Parabéns a tarefa"+trf.getDescricao()+"Foi concluida com sucesso!";
+        String msg = "Parabéns a tarefa "+tarefa.getDescricao()+" Foi concluida com sucesso!";
         
         System.out.println(msg);
         
