@@ -33,6 +33,9 @@ public class Tarefa implements Serializable {
     private RecorrenciaEnum recorrencia;
     
     private boolean isMesmoValorRecorrente;
+    
+    /** atributo usado para edicao na tela pelo jsf*/
+    private boolean editar;
 
     public Long getId() {
         return id;
@@ -82,6 +85,10 @@ public class Tarefa implements Serializable {
         this.recorrencia = recorrencia;
     }
 
+    public boolean getMesmoValorRecorrente() {
+        return isMesmoValorRecorrente;
+    }
+    
     public boolean isMesmoValorRecorrente() {
         return isMesmoValorRecorrente;
     }
@@ -90,6 +97,18 @@ public class Tarefa implements Serializable {
         this.isMesmoValorRecorrente = isMesmoValorRecorrente;
     }
 
+    public boolean getEditar() {
+        return editar;
+    }
+
+    public boolean isEditar() {
+        return editar;
+    }
+
+    public void setEditar(boolean editar) {
+        this.editar = editar;
+    }
+    
     @Override
     public String toString() {
         return "Tarefa [id=" + id + ", isConcluido=" + isConcluido + ", Descricao=" + descricao + ", dataLimiteTarefa=" + dataLimiteTarefa + ", valorAtividade=" + valorAtividade
