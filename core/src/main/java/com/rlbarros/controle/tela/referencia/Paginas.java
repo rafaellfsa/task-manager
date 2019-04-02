@@ -10,17 +10,23 @@ package com.rlbarros.controle.tela.referencia;
  */
 public enum Paginas {
 
+    /***
+     * index.xml
+     */
     INDEX("index.xml"),
+    /***
+     * tarefa/incluir.xml
+     */
     INCLUIR("tarefa/incluir.xml");
     
-    private String descricao;
+    private String arquivo;
 
-    public String descricao() {
-        return descricao;
+    public String arquivo() {
+        return arquivo;
     }
 
-    private Paginas(String desc) {
-        this.descricao = desc;
+    private Paginas(String arquivo) {
+        this.arquivo = arquivo;
     }
 
 }

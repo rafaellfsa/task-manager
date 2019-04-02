@@ -8,12 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.faces.application.Application;
-import javax.faces.application.ViewHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.component.UIViewRoot;
-import javax.faces.context.FacesContext;
 
 import com.rlbarros.controle.tela.referencia.Paginas;
 import com.rlbarros.modelo.entidade.Tarefa;
@@ -27,13 +23,15 @@ import com.rlbarros.modelo.enums.RecorrenciaEnum;
 @ManagedBean
 public class TarefaBean {
     
-    private Tarefa tarefa = new Tarefa();
+    private Tarefa tarefa;
     private List<Tarefa> tarefas = new ArrayList<>();
     public Paginas pagina;
     
     
     public TarefaBean() {
         tarefas = listarTarefas();
+        tarefa = new Tarefa();
+
     }
 
     public String apresentaMensagem() {
@@ -85,25 +83,25 @@ public class TarefaBean {
     public String adicionarTarefa() {
 //        List<Tarefa> tarefas = listarTarefas();
 //        tarefas.add(t);
-        return Paginas.INCLUIR.descricao();
+        return Paginas.INCLUIR.arquivo();
     }
     
-    public void habilitarEdicaoTarefa(Tarefa t) {
+    public void habilitarEdicaoTarefa(Tarefa tarefa) {
         
-        for (Tarefa tarefa : tarefas) {
-            if (tarefa.getId() == t.getId()) {
-                tarefa.setEditar(true);
+        for (Tarefa t : tarefas) {
+            if (t.getId() == tarefa.getId()) {
+                t.setEditar(true);
             }
         }
-        refresh();
-//        return tarefas;
+        
+        
+//        return Paginas.INDEX.arquivo();
     }
 
     public void editarTarefa(Tarefa t) {
         
         List<Tarefa> tarefas = listarTarefas();
         tarefas.forEach(item -> item = editarTarefaCalBack(item, t) );
-        refresh();
 //        return tarefas;
     }
     
@@ -115,7 +113,6 @@ public class TarefaBean {
             if (tarefa.getId() == t.getId()) {
                 tarefas.remove(t);
             }
-            refresh();
         }
 
         return tarefas;
@@ -133,24 +130,6 @@ public class TarefaBean {
         return itemAntigo;
     }
 
-    
-    public void refresh() {
-
-        FacesContext context = FacesContext.getCurrentInstance();
-
-        Application application = context.getApplication();
-
-        ViewHandler viewHandler = application.getViewHandler();
-
-        UIViewRoot viewRoot = viewHandler.createView(context, context.getViewRoot().getViewId());
-
-        context.setViewRoot(viewRoot);
-
-        context.renderResponse();
-
-        }
-    
-    
     public Tarefa getTarefa() {
         return tarefa;
     }
