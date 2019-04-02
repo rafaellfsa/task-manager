@@ -75,14 +75,17 @@
 
 			<h:column>
 				<f:facet name="header">Ações</f:facet>
+				
 				<h:commandButton value="Salvar" rendered="#{tarefa.editar}" immediate="true"  >
 					<f:attribute name="tarefa" value="tarefa" />
 				        <f:ajax listener="#{tarefaBean.editarTarefa}" execute="formTarefa" render="@all" />       
 				</h:commandButton>
-				<h:commandButton value="Editar"  rendered="#{!tarefa.editar}" immediate="true" >
-					<f:attribute name="tarefa" value="tarefa" />
-				        <f:ajax event="click" listener="#{tarefaBean.habilitarEdicaoTarefa}" execute="formTarefa"/>       
+				
+				
+				<h:commandButton action="#{tarefaBean.habilitarEdicaoTarefa(tarefa)}" value="Editar"  rendered="#{!tarefa.editar}" >
+						<f:ajax execute="@form" render="@form:formTarefa" />
 				</h:commandButton>
+				
 				<h:commandButton value="Excluir" action="#{tarefaBean.removerTarefa(tarefa)}" />
 			</h:column>
 
