@@ -22,12 +22,11 @@ import com.rlbarros.modelo.enums.RecorrenciaEnum;
 @ViewScoped
 @ManagedBean
 public class TarefaBean {
-    
+
     private Tarefa tarefa;
     private List<Tarefa> tarefas = new ArrayList<>();
     public Paginas pagina;
-    
-    
+
     public TarefaBean() {
         tarefas = listarTarefas();
         tarefa = new Tarefa();
@@ -35,19 +34,19 @@ public class TarefaBean {
     }
 
     public String apresentaMensagem() {
-        
-        String msg = "Parabéns a tarefa "+tarefa.getDescricao()+" Foi concluida com sucesso!";
-        
+
+        String msg = "Parabéns a tarefa " + tarefa.getDescricao() + " Foi concluida com sucesso!";
+
         System.out.println(msg);
-        
+
         return msg;
     }
-    
-    public List<Tarefa> listarTarefas(){
+
+    public List<Tarefa> listarTarefas() {
         Tarefa t1 = new Tarefa();
         Tarefa t2 = new Tarefa();
         Tarefa t3 = new Tarefa();
-        
+
         t1.setId(1L);
         t1.setConcluido(true);
         t1.setDataLimiteTarefa(new Date());
@@ -55,7 +54,7 @@ public class TarefaBean {
         t1.setMesmoValorRecorrente(false);
         t1.setRecorrencia(RecorrenciaEnum.MENSAL);
         t1.setValorAtividade(null);
-        
+
         t2.setId(2L);
         t2.setConcluido(true);
         t2.setDataLimiteTarefa(new Date());
@@ -63,7 +62,7 @@ public class TarefaBean {
         t2.setMesmoValorRecorrente(false);
         t2.setRecorrencia(RecorrenciaEnum.ANUAL);
         t2.setValorAtividade(null);
-        
+
         t3.setId(3L);
         t3.setConcluido(true);
         t3.setDataLimiteTarefa(new Date());
@@ -71,51 +70,41 @@ public class TarefaBean {
         t3.setMesmoValorRecorrente(false);
         t3.setRecorrencia(RecorrenciaEnum.SEMANAL);
         t3.setValorAtividade(null);
-        
-        List<Tarefa> tasks =  new ArrayList<>();
+
+        List<Tarefa> tasks = new ArrayList<>();
         tasks.add(t1);
         tasks.add(t2);
         tasks.add(t3);
-        
+
         return tasks;
     }
-    
+
     public String adicionarTarefa() {
-//        List<Tarefa> tarefas = listarTarefas();
-//        tarefas.add(t);
         return Paginas.INCLUIR.arquivo();
     }
-    
+
     public void habilitarEdicaoTarefa(Tarefa tarefa) {
-        
+
         for (Tarefa t : tarefas) {
             if (t.getId() == tarefa.getId()) {
                 t.setEditar(true);
             }
         }
-        
-        
-//        return Paginas.INDEX.arquivo();
     }
 
-    public void editarTarefa(Tarefa t) {
-        
-        List<Tarefa> tarefas = listarTarefas();
-        tarefas.forEach(item -> item = editarTarefaCalBack(item, t) );
-//        return tarefas;
+    public void editarTarefa(Tarefa tarefa) {
+        List<Tarefa> tarefas = new ArrayList<>();
+        this.tarefas.forEach(item -> tarefas.add(editarTarefaCalBack(item, tarefa)));
+        this.tarefas.clear();
+        this.tarefas = tarefas;
     }
-    
-    public List<Tarefa> removerTarefa(Tarefa t) {
-        
-        List<Tarefa> tarefas = listarTarefas();
-        
-        for (Tarefa tarefa : tarefas) {
+
+    public void removerTarefa(Tarefa t) {
+        for (Tarefa tarefa : listarTarefas()) {
             if (tarefa.getId() == t.getId()) {
                 tarefas.remove(t);
             }
         }
-
-        return tarefas;
     }
 
     /**
@@ -124,8 +113,8 @@ public class TarefaBean {
      */
     private Tarefa editarTarefaCalBack(Tarefa itemAntigo, Tarefa itemEditado) {
         if (itemAntigo.getId() == itemEditado.getId()) {
+            itemEditado.setEditar(false);
             return itemEditado;
-            
         }
         return itemAntigo;
     }
@@ -138,15 +127,12 @@ public class TarefaBean {
         this.tarefa = tarefa;
     }
 
-
     public List<Tarefa> getTarefas() {
         return tarefas;
     }
 
-
     public void setTarefas(List<Tarefa> tarefas) {
         this.tarefas = tarefas;
     }
-
 
 }
