@@ -9,72 +9,34 @@
 </h:head>
 <h:body>
 
-	<h:form>
+	<h:form id="formCadastrarTarefa">
 
-		<h:dataTable value="#{tarefaBean.tarefas}" var="tarefa"
-			styleClass="order-table" headerClass="order-table-header"
-			rowClasses="order-table-odd-row,order-table-even-row">
+		<h:panelGrid id="cadastrarTarefa" columns="2" title="Informações da tarefa. ">
+		
+			<h:outputText value="Descrição" />
+			<h:inputText value="#{tarefaBean.tarefa.descricao}" />
 
-			<h:column>
+			<h:outputText value="Mesmo valor recorrente" />
+			<h:selectBooleanCheckbox value="#{tarefaBean.tarefa.mesmoValorRecorrente}" />
 
-				<f:facet name="header">Concluído</f:facet>
+			<h:outputText value="recorrência" />
+			<h:selectOneMenu value="#{tarefaBean.recorrenciaSelecionada}">
+				<f:selectItems value="#{tarefaBean.obterRecorrenciasTarefa}" var="recorrencia" 
+								itemLabel="#{recorrencia.descricao}" itemValue="#{recorrencia}"/>
+			</h:selectOneMenu>
 
-				<h:selectBooleanCheckbox value="#{tarefa.concluido}" size="10" />
+			<h:outputText value="Valor atividade" />
+			<h:inputText value="#{tarefaBean.tarefa.valorAtividade}" />
 
-			</h:column>
+			<h:outputText value="Data limite tarefa" />
+			<h:inputText id="data" value="#{tarefaBean.tarefa.dataLimiteTarefa}" >
+				<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+			</h:inputText>
+					
+			<h:commandButton value="Save Changes"
+				action="#{tarefaBean.apresentaMensagem}" />
 
-			<h:column>
-
-				<f:facet name="header">Descrição</f:facet>
-
-				<h:inputText value="#{tarefa.descricao}" size="20" />
-
-			</h:column>
-
-			<h:column>
-
-				<f:facet name="header">Valor Recorrente</f:facet>
-
-				<h:selectBooleanCheckbox value="#{tarefa.mesmoValorRecorrente}"
-					size="10" />
-
-
-			</h:column>
-
-			<h:column>
-
-				<f:facet name="header">Recorrencia</f:facet>
-
-				<h:inputText value="#{tarefa.recorrencia.descricao}" size="30" />
-
-			</h:column>
-
-			<h:column>
-
-				<f:facet name="header">Valor atividade</f:facet>
-
-				<h:inputText value="#{tarefa.valorAtividade}" size="5" />
-
-			</h:column>
-
-			<h:column>
-
-				<f:facet name="header">Data limite</f:facet>
-
-				<h:outputText value="#{user.data}">
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</h:outputText>
-				<h:inputText value="#{tarefa.dataLimiteTarefa}" size="5">
-					<f:convertDateTime pattern="dd/MM/yyy" />
-				</h:inputText>
-
-			</h:column>
-
-
-		</h:dataTable>
-
-		<h:commandButton value="Save Changes"
-			action="#{tarefaBean.apresentaMensagem}" />
+		</h:panelGrid>
 
 	</h:form>
 

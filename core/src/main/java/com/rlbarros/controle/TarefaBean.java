@@ -26,11 +26,11 @@ public class TarefaBean {
     private Tarefa tarefa;
     private List<Tarefa> tarefas = new ArrayList<>();
     public Paginas pagina;
+    public RecorrenciaEnum recorrenciaSelecionada;
 
     public TarefaBean() {
         tarefas = listarTarefas();
         tarefa = new Tarefa();
-
     }
 
     public String apresentaMensagem() {
@@ -106,6 +106,16 @@ public class TarefaBean {
             }
         }
     }
+    
+    public List<RecorrenciaEnum> getObterRecorrenciasTarefa(){
+
+        List<RecorrenciaEnum> retorno = new ArrayList<>();
+        
+        for (RecorrenciaEnum r : RecorrenciaEnum.values()) {
+            retorno.add(r);
+        }
+        return retorno;
+    }
 
     /**
      * @param item
@@ -133,6 +143,14 @@ public class TarefaBean {
 
     public void setTarefas(List<Tarefa> tarefas) {
         this.tarefas = tarefas;
+    }
+
+    public RecorrenciaEnum getRecorrenciaSelecionada() {
+        return recorrenciaSelecionada;
+    }
+
+    public void setRecorrenciaSelecionada(RecorrenciaEnum recorrenciaSelecionada) {
+        this.recorrenciaSelecionada = recorrenciaSelecionada;
     }
 
 }
