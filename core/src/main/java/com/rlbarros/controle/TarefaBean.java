@@ -106,6 +106,11 @@ public class TarefaBean {
             }
         }
     }
+
+    public String salvarNovaTarefa() {
+        tarefas.add(tarefa);
+        return Paginas.INDEX.redirect();
+    }
     
     public List<RecorrenciaEnum> getObterRecorrenciasTarefa(){
 

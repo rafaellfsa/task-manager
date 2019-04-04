@@ -79,7 +79,6 @@
 				<h:commandButton value="Salvar" action="#{tarefaBean.editarTarefa(tarefa)}"  rendered="#{tarefa.editar}"  >
 				</h:commandButton>
 				
-				
 				<h:commandButton value="Editar"  action="#{tarefaBean.habilitarEdicaoTarefa(tarefa)}" rendered="#{!tarefa.editar}" >
 				</h:commandButton>
 				
@@ -90,7 +89,7 @@
 
 		</h:dataTable>
 
-    	  <h:commandButton value="Save Changes" action="#{tarefaBean.adicionarTarefa}" />
+    	  <h:commandButton value="Criar nova tarefa" action="#{tarefaBean.adicionarTarefa}" />
 
 	</h:form>
 
